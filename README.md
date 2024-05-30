@@ -64,10 +64,11 @@ const functionOptions = {
 You can check more details in the (Function Calling OpenAI documentation)[https://platform.openai.com/docs/guides/function-calling]
 
 ## Step 2: Implement the Function
+
 Next, implement the function logic. This is where you define the actions the function performs when called. Here's an example implementation of the personSearch function:
 
 ```
-const personSearch = async function (name, lastName) {
+export const personSearch = async function (name, lastName) {
     try {
         if (name && lastName) {
             const searchResult = `@${name},${lastName}`;
@@ -81,15 +82,10 @@ const personSearch = async function (name, lastName) {
 };
 ```
 
-## Step 3: Export the Function
-Export the function so that it can be imported into the code responsible for adding the function to the Assistant. Ensure to export both the function name, options, and the function itself. Here's how to export the personSearch function:
+Note: you have to export the function so that it can be imported into the code responsible for adding the function to the Assistant. Ensure to export both the function name, options, and the function itself.
 
-```
-module.exports = { functionName, functionOptions, personSearch };
-```
-
-## Step 4: Importing the Function in the Assistant
-Finally, to import the function into the Assistant, you need to select the "Add function to assistant" option in the Menu and then provide the path to the file, such as ./functions/personSearch.js
+## Step 3: Importing the Function in the Assistant
+Finally, to import the function into the Assistant, you need to select the "Add function to assistant" option in the Menu and then provide the path to the file, such as ./src/functions/personSearch.js
 
 # Import a file to an Assistant
 
@@ -99,6 +95,6 @@ The first step is to place the file inside the designated directory, such as ./p
 
 ## Step 2: Uploading a file to the Assistant
 
-To utilize the file within the Assistant, you need to select the "Upload file to assistant" option and then provide the path to the function its path, for example ./public/example.pdf
+To utilize the file within the Assistant, you need to select the "Upload file to assistant" option and then provide the path to the function its path, for example ./src/public/example.pdf
 
 Note: You can only upload one file at a time.
